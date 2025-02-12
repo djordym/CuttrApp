@@ -3,7 +3,7 @@
   "create_account": "Créer un compte",
   "login": "Se connecter",
   "register": "S'inscrire",
-  "email": "Nom d'utilisateur",
+  "email": "Email",
   "password": "Mot de passe",
   "name": "Surnom",
   "no_account_register": "Vous n'avez pas de compte ? Inscrivez-vous",

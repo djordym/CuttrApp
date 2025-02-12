@@ -20,6 +20,11 @@
       "policy": "sdkVersion"
     },
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDso_2fs3Gn_5fAVVe4PKA4hIbugX07v90"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#00000000"
