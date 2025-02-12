@@ -1,4 +1,6 @@
-{
+import 'dotenv/config';
+
+export default {
   "expo": {
     "name": "MyCuttrApp",
     "slug": "MyCuttrApp",
@@ -21,9 +23,10 @@
     },
     "android": {
       "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyDso_2fs3Gn_5fAVVe4PKA4hIbugX07v90"
-        }
+        googleMaps: {
+          apiKey: process.env.GOOGLE_MAPS_API_KEY, // Loaded from an environment variable
+        },
+
       },
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
