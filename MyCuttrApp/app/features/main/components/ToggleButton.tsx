@@ -1,22 +1,44 @@
-// src/components/ToggleButton.tsx
-
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { COLORS } from '../../../theme/colors';
 
-interface ToggleButtonProps {
-  options: [string, string];
-  selected: string;
-  onToggle: (option: string) => void;
+export interface ToggleButtonProps<T = string> {
+  /** The list of internal option keys. */
+  options: T[];
+  /** The currently selected option key. */
+  selected: T;
+  /** Callback fired when a new option is selected. */
+  onToggle: (option: T) => void;
+  /**
+   * Function to map an option key to a display label.
+   * For example, you might map 'thumbnail' → t('Thumbnails').
+   */
+  getLabel?: (option: T) => string;
+  /** Optional container style override for the toggle group wrapper. */
+  containerStyle?: StyleProp<ViewStyle>;
+  /** Optional style override for individual buttons. */
+  buttonStyle?: StyleProp<ViewStyle>;
+  /** Optional style override for selected buttons. */
+  buttonSelectedStyle?: StyleProp<ViewStyle>;
+  /** Optional style override for text inside each button. */
+  buttonTextStyle?: StyleProp<TextStyle>;
+  /** Optional style override for text in a selected button. */
+  buttonTextSelectedStyle?: StyleProp<TextStyle>;
 }
 
-export const ToggleButton: React.FC<ToggleButtonProps> = ({
+export const ToggleButton = <T extends string>({
   options,
   selected,
   onToggle,
-}) => {
+  getLabel,
+  containerStyle,
+  buttonStyle,
+  buttonSelectedStyle,
+  buttonTextStyle,
+  buttonTextSelectedStyle,
+}: ToggleButtonProps<T>) => {
   return (
-    <View style={styles.toggleContainer}>
+    <View style={[styles.toggleContainer, containerStyle]}>
       {options.map((option) => {
         const isActive = selected === option;
         return (
@@ -25,18 +47,20 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
             onPress={() => onToggle(option)}
             style={[
               styles.button,
-              isActive && styles.activeButton,
+              buttonStyle,
+              isActive && [styles.activeButton, buttonSelectedStyle],
             ]}
             accessibilityRole="button"
-            accessibilityLabel={option}
+            accessibilityLabel={getLabel ? getLabel(option) : option}
           >
             <Text
               style={[
                 styles.buttonText,
-                isActive && styles.activeButtonText,
+                buttonTextStyle,
+                isActive && [styles.activeButtonText, buttonTextSelectedStyle],
               ]}
             >
-              {option}
+              {getLabel ? getLabel(option) : option}
             </Text>
           </TouchableOpacity>
         );
@@ -44,8 +68,6 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
     </View>
   );
 };
-
-export default ToggleButton;
 
 const styles = StyleSheet.create({
   toggleContainer: {
@@ -75,3 +97,5 @@ const styles = StyleSheet.create({
     color: COLORS.textLight,
   },
 });
+
+export default ToggleButton;

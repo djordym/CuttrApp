@@ -1,7 +1,7 @@
 // src/features/main/hooks/usePlantHooks.ts
 import { useQuery } from "react-query";
 import { plantService } from "../../../api/plantService";
-import { PlantResponse } from "../../../types/apiTypes";
+import { PlantRequest, PlantResponse } from "../../../types/apiTypes";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { useMutation, useQueryClient } from "react-query";
@@ -75,4 +75,22 @@ export const useMarkPlantsAsTraded = () => {
   });
 };
 
-export default useOtherUserPlants;
+export const useUpdatePlant = () => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    ({
+      plantId,
+      data,
+    }: {
+      plantId: number;
+      data: PlantRequest;
+    }) => plantService.updateMyPlant(plantId, data),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['myPlants']);
+      },
+    }
+  );
+};
+
+export default useMyPlants;

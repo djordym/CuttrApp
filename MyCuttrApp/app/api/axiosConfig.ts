@@ -1,4 +1,3 @@
-// File: app/api/axiosConfig.ts
 import axios from "axios";
 import { store } from "../store"; // your Redux store
 import { refreshTokenThunk, logout } from "../features/auth/store/authSlice";
@@ -6,13 +5,15 @@ import { setGlobalError } from "../store/slices/globalErrorSlice";
 import { RootState } from "../store"; // your root state type
 import { AuthTokenResponse } from "../types/apiTypes";
 import { log } from "../utils/logger";
+import { storage } from "../utils/storage"; // Import storage to clear tokens
 
 let isRefreshing = false;
 let pendingRequests: Array<(token: string) => void> = [];
 
 const api = axios.create({
-  baseURL: "http://192.168.137.1:5020/api",
-  timeout: 10000,
+  baseURL:
+    "https://cuttrapi-epfvarfnb9bccdcn.westeurope-01.azurewebsites.net/api",
+  timeout: 15000,
 });
 
 // ────────────────────────────────────────────────────────────────────────────────
@@ -20,7 +21,7 @@ const api = axios.create({
 // ────────────────────────────────────────────────────────────────────────────────
 api.interceptors.request.use(
   async (config) => {
-    // Do not add an Authorization header for refresh requests
+    // Do not attach the Authorization header for refresh requests.
     if (config.url && config.url.includes("/auth/refresh")) {
       log.debug("API Request (refresh)", {
         baseUrl: api.defaults.baseURL,
@@ -31,7 +32,7 @@ api.interceptors.request.use(
       });
       return config;
     }
-    log.debug("API Request (refresh)", {
+    log.debug("API Request", {
       baseUrl: api.defaults.baseURL,
       url: config.url,
       method: config.method,
@@ -65,9 +66,11 @@ api.interceptors.response.use(
     return response;
   },
   async (error) => {
-    // If there's no response (network error), dispatch a global error
+    // If there's no response (network error), dispatch a global error and do not log out.
     if (!error.response) {
-      store.dispatch(setGlobalError("Network Error: Unable to connect."));
+      store.dispatch(
+        setGlobalError("Network Error: Unable to connect.")
+      );
       return Promise.reject(error);
     }
 
@@ -75,8 +78,8 @@ api.interceptors.response.use(
     const originalRequest = error.config;
 
     // ─────────────────────────────────────────────────────────────
-    // If the failing request is the refresh endpoint itself, then
-    // do not attempt another refresh; immediately log out.
+    // 1. If the failing request is the refresh endpoint itself,
+    // clear tokens and force logout.
     // ─────────────────────────────────────────────────────────────
     if (
       originalRequest.url &&
@@ -86,12 +89,13 @@ api.interceptors.response.use(
         "Refresh endpoint failed. Forcing logout.",
         error.response.data
       );
+      await storage.clearTokens();
       store.dispatch(logout());
       return Promise.reject(error);
     }
 
     // ─────────────────────────────────────────────────────────────
-    // 1. Handle 401 Unauthorized for token refresh
+    // 2. Handle 401 Unauthorized for token refresh for other requests.
     // ─────────────────────────────────────────────────────────────
     if (status === 401 && !originalRequest._retry) {
       if (!isRefreshing) {
@@ -121,6 +125,7 @@ api.interceptors.response.use(
           log.error("Refresh token failed, logging out:", refreshError);
           isRefreshing = false;
           pendingRequests = [];
+          await storage.clearTokens();
           store.dispatch(logout());
           return Promise.reject(refreshError);
         }
@@ -135,7 +140,7 @@ api.interceptors.response.use(
     }
 
     // ─────────────────────────────────────────────────────────────
-    // 2. Other errors
+    // 3. For other errors, extract an error message and dispatch it globally.
     // ─────────────────────────────────────────────────────────────
     let errorMessage: string;
     if (typeof error.response.data === "string") {

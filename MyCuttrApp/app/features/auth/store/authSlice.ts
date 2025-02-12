@@ -89,12 +89,18 @@ export const refreshTokenThunk = createAsyncThunk<
     if (!refreshToken) {
       return rejectWithValue('No refresh token available');
     }
-    const payload: RefreshTokenRequest = { refreshToken: refreshToken };
+    const payload: RefreshTokenRequest = { refreshToken };
     try {
       const data = await authService.refreshToken(payload);
       await storage.saveTokens(data.accessToken, data.refreshToken);
       return data;
     } catch (error: any) {
+      // If there is no response, assume a network error and do not clear tokens.
+      if (!error.response) {
+        return rejectWithValue('Network error during token refresh');
+      }
+      // For other errors (e.g. 401), clear tokens.
+      await storage.clearTokens();
       return rejectWithValue('Token refresh failed');
     }
   }

@@ -116,78 +116,6 @@
       "title": "Planten selecteren",
       "instructions": "Selecteer de planten die je wilt ruilen. Tik op een plant om deze te selecteren."
     },
-    "plantStage": {
-      "Seedling": "Zaailing",
-      "Cutting": "Stekje",
-      "Mature": "Volwassen"
-    },
-    "plantCategory": {
-      "Succulent": "Vetplant",
-      "Cactus": "Cactus",
-      "Fern": "Varen",
-      "Orchid": "Orchidee",
-      "Herb": "Kruid",
-      "Palm": "Palm",
-      "LeafyHouseplant": "BladrijkeKamerplant",
-      "AquaticPlant": "Waterplant",
-      "ClimbingPlant": "Klimplant",
-      "Tree": "Boom",
-      "Other": "Anders"
-    },
-    "wateringNeed": {
-      "VeryLowWater": "ZeerWeinigWater",
-      "LowWater": "WeinigWater",
-      "ModerateWater": "GemiddeldWater",
-      "HighWater": "VeelWater",
-      "VeryHighWater": "ZeerVeelWater"
-    },
-    "lightRequirement": {
-      "FullSun": "VolleZon",
-      "PartialSun": "GedeeltelijkeZon",
-      "BrightIndirectLight": "HelderIndirectLicht",
-      "LowLight": "WeinigLicht"
-    },
-    "size": {
-      "SmallSize": "KleineOmvang",
-      "MediumSize": "GemiddeldeOmvang",
-      "LargeSize": "GroteOmvang"
-    },
-    "indoorOutdoor": {
-      "Indoor": "Binnen",
-      "Outdoor": "Buiten",
-      "IndoorAndOutdoor": "BinnenEnBuiten"
-    },
-    "propagationEase": {
-      "EasyPropagation": "MakkelijkTeVermeerderen",
-      "ModeratePropagation": "GemiddeldTeVermeerderen",
-      "DifficultPropagation": "MoeilijkTeVermeerderen"
-    },
-    "petFriendly": {
-      "PetFriendly": "Huisdiervriendelijk",
-      "NotPetFriendly": "NietHuisdiervriendelijk"
-    },
-    "extras": {
-      "Fragrant": "Geurend",
-      "Edible": "Eetbaar",
-      "Medicinal": "Medicinaal",
-      "AirPurifying": "Luchtzuiverend",
-      "Decorative": "Decoratief",
-      "Flowering": "Bloeiend",
-      "TropicalVibe": "TropischTintje",
-      "FoliageHeavy": "VeelBlad",
-      "DroughtTolerant": "Droogtetolerant",
-      "HumidityLoving": "Vochtminnend",
-      "LowMaintenance": "WeinigOnderhoud",
-      "WinterHardy": "Winterhard",
-      "BeginnerFriendly": "GeschiktVoorBeginners",
-      "Fruiting": "Vruchtdragend",
-      "PollinatorFriendly": "Bestuiversvriendelijk",
-      "FastGrowing": "Snelgroeiend",
-      "VariegatedFoliage": "BontBlad",
-      "Climbing": "Klimmend",
-      "GroundCover": "Bodembedekker",
-      "Rare": "Zeldzaam"
-    },
     "add_plant_select_image_desc": "Kies een optie om een afbeelding voor je plant te selecteren.",
     "add_plant_select_picture_button": "Kies uit bibliotheek",
     "add_plant_take_picture_button": "Foto maken",
@@ -235,7 +163,7 @@
     "Language": "Taal",
     "Notifications": "Meldingen",
     "Push Notifications": "Pushmeldingen",
-    "Appearance": "Uiterlijk",
+    "Appearance": "Thema",
     "Dark Mode": "Donkere modus",
     "Not Implemented": "Nog niet geïmplementeerd",
     "This feature is not implemented yet.": "Deze functie is nog niet geïmplementeerd.",
@@ -252,7 +180,7 @@
     "settings_logout_confirmation": "Weet je zeker dat je wilt uitloggen?",
     "settings_delete_account_not_implemented": "Nog niet geïmplementeerd.",
     "settings_feature_not_implemented": "Deze functie is nog niet geïmplementeerd.",
-    "set_preferences_title": "Gebruikersvoorkeuren",
+    "set_preferences_title": "Filters",
     "set_preferences_search_radius": "Zoekradius: {{radius}} km",
     "set_preferences_preferred_plant_stages": "Voorkeursplantenstadia:",
     "set_preferences_preferred_categories": "Voorkeurscategorieën:",

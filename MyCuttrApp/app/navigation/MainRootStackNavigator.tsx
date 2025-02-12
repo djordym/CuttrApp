@@ -9,6 +9,7 @@ import OtherProfileScreen from '../features/main/screens/OtherProfileScreen';
 import MakeTradeProposalScreen from '../features/main/screens/MakeTradeProposalScreen';
 import BrowseMatchesScreen from '../features/main/screens/BrowseMatchesScreen';
 import TradeProposalsScreen from '../features/main/screens/TradeProposalsScreen';
+import EditPlantScreen from '../features/main/screens/EditPlantScreen';
 
 const RootStack = createNativeStackNavigator();
 
@@ -31,6 +32,11 @@ const MainRootStackNavigator = () => (
         name="AddPlant"
         component={AddPlantScreen}
         options={{ presentation: 'modal' }}
+    />
+    <RootStack.Screen
+      name="EditPlant"
+      component={EditPlantScreen}
+      options={{ presentation: 'modal' }}
     />
     <RootStack.Screen
       name="OtherProfile"

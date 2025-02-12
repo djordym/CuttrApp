@@ -1,5 +1,3 @@
-// File: src/screens/MyProfileScreen.tsx
-
 import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
@@ -26,13 +24,11 @@ import { EditProfileModal } from '../modals/EditProfileModal';
 import PlantThumbnail from '../components/PlantThumbnail';
 import { headerStyles } from '../styles/headerStyles';
 import { ProfileCard } from '../components/ProfileCard';
-import { ToggleButton } from '../components/ToggleButton'; // New ToggleButton component
+import { ToggleButton } from '../components/ToggleButton';
 
 const MyProfileScreen: React.FC = () => {
   const { t } = useTranslation();
   const navigation = useNavigation();
-
-  // Hooks for profile, plants, and search radius
   const {
     data: userProfile,
     isLoading: loadingProfile,
@@ -51,8 +47,9 @@ const MyProfileScreen: React.FC = () => {
   const [cityCountry, setCityCountry] = useState<string>('');
   const [editProfileVisible, setEditProfileVisible] = useState(false);
 
-  // Toggle: Thumbnails or Full-size for plants
-  const [viewOption, setViewOption] = useState<'Thumbnails' | 'Full Size'>('Thumbnails');
+  // Use internal language‐independent keys for the toggle:
+  type ViewOption = 'thumbnail' | 'full';
+  const [viewOption, setViewOption] = useState<ViewOption>('thumbnail');
 
   // Position for the EditProfileModal
   const [editCardLayout, setEditCardLayout] = useState({
@@ -73,7 +70,9 @@ const MyProfileScreen: React.FC = () => {
   };
 
   const OnDelete = () => {
-    // Implement delete functionality here
+    //show message soon to be implemented
+    alert('Feature to delete plant will be implemented soon.');
+
   };
 
   // Navigation to AddPlant
@@ -83,14 +82,17 @@ const MyProfileScreen: React.FC = () => {
 
   // Rendering plants (either as thumbnails or full-size)
   const renderPlantItem = (item: PlantResponse) => {
-    if (viewOption === 'Thumbnails') {
+    if (viewOption === 'thumbnail') {
       return (
         <PlantThumbnail
           key={item.plantId}
           plant={item}
           selectable
           deletable
-          onPress={OnDelete}
+          OnDelete={OnDelete}
+          onEditPress={() =>
+            navigation.navigate('EditPlant', { plant: item })
+          }
         />
       );
     } else {
@@ -178,16 +180,23 @@ const MyProfileScreen: React.FC = () => {
           </View>
 
           {/* Toggle between Thumbnails and Full view */}
-          <ToggleButton
-            options={[t('Thumbnails'), t('Full Size')]}
+          <ToggleButton<ViewOption>
+            options={['thumbnail', 'full']}
             selected={viewOption}
-            onToggle={(option) => setViewOption(option as 'Thumbnails' | 'Full Size')}
+            onToggle={(option) => setViewOption(option)}
+            getLabel={(option) =>
+              option === 'thumbnail' ? t('Thumbnails') : t('Full Size')
+            }
           />
 
           {/* Plants List */}
           {myPlants && myPlants.length > 0 ? (
             <View
-              style={viewOption === 'Full Size' ? styles.fullViewContainer : styles.thumbViewContainer}
+              style={
+                viewOption === 'full'
+                  ? styles.fullViewContainer
+                  : styles.thumbViewContainer
+              }
             >
               {myPlants.map((plant) => renderPlantItem(plant))}
             </View>

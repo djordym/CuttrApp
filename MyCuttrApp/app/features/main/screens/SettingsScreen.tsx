@@ -364,6 +364,23 @@ const SettingsScreen: React.FC = () => {
                 Français
               </Text>
             </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => handleLanguageChange('nl')}
+              style={[
+                styles.langButton,
+                currentLang === 'nl' && styles.langButtonSelected,
+              ]}
+            >
+              <Text
+                style={[
+                  styles.langButtonText,
+                  currentLang === 'nl' && styles.langButtonTextSelected,
+                ]}
+              >
+                Nederlands
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
 

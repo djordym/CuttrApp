@@ -54,11 +54,7 @@ const SwipeScreen: React.FC<SwipeScreenProps> = () => {
   } = useLikablePlants();
 
   const { data: userProfile } = useMyProfile();
-  const {
-    data: userPreferences,
-    updatePreferences,
-  } = useUserPreferences();
-
+  const { data: userPreferences, updatePreferences } = useUserPreferences();
   const {
     data: myPlants,
     isLoading: loadingMyPlants,
@@ -331,7 +327,10 @@ const SwipeScreen: React.FC<SwipeScreenProps> = () => {
                     }
                   >
                     <View style={styles.tagChip}>
-                      <Text style={styles.tagChipText}>{item.value}</Text>
+                      {/* Translate the tag using the 'plantTags' namespace */}
+                      <Text style={styles.tagChipText}>
+                        {t('plantTags.' + item.value)}
+                      </Text>
                       <Ionicons name="close-circle" size={16} color="#fff" />
                     </View>
                   </TouchableOpacity>

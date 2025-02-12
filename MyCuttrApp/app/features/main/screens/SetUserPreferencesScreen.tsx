@@ -179,7 +179,7 @@ const SetUserPreferencesScreen: React.FC = () => {
                     : [...prev, val]
                 )
               }
-              getLabel={(val) => t('plantStage.' + val)}
+              getLabel={(val) => t('plantTags.' + val)}
             />
 
             {/* Preferred Categories */}
@@ -195,7 +195,7 @@ const SetUserPreferencesScreen: React.FC = () => {
                     : [...prev, val]
                 )
               }
-              getLabel={(val) => t('plantCategory.' + val)}
+              getLabel={(val) => t('plantTags.' + val)}
             />
 
             {/* Watering Need */}
@@ -211,7 +211,7 @@ const SetUserPreferencesScreen: React.FC = () => {
                     : [...prev, val]
                 )
               }
-              getLabel={(val) => t('wateringNeed.' + val)}
+              getLabel={(val) => t('plantTags.' + val)}
             />
 
             {/* Light Requirement */}
@@ -227,7 +227,7 @@ const SetUserPreferencesScreen: React.FC = () => {
                     : [...prev, val]
                 )
               }
-              getLabel={(val) => t('lightRequirement.' + val)}
+              getLabel={(val) => t('plantTags.' + val)}
             />
 
             {/* Size */}
@@ -243,7 +243,7 @@ const SetUserPreferencesScreen: React.FC = () => {
                     : [...prev, val]
                 )
               }
-              getLabel={(val) => t('size.' + val)}
+              getLabel={(val) => t('plantTags.' + val)}
             />
 
             {/* Indoor/Outdoor */}
@@ -259,7 +259,7 @@ const SetUserPreferencesScreen: React.FC = () => {
                     : [...prev, val]
                 )
               }
-              getLabel={(val) => t('indoorOutdoor.' + val)}
+              getLabel={(val) => t('plantTags.' + val)}
             />
 
             {/* Propagation Ease */}
@@ -275,7 +275,7 @@ const SetUserPreferencesScreen: React.FC = () => {
                     : [...prev, val]
                 )
               }
-              getLabel={(val) => t('propagationEase.' + val)}
+              getLabel={(val) => t('plantTags.' + val)}
             />
 
             {/* Pet Friendly */}
@@ -291,7 +291,7 @@ const SetUserPreferencesScreen: React.FC = () => {
                     : [...prev, val]
                 )
               }
-              getLabel={(val) => t('petFriendly.' + val)}
+              getLabel={(val) => t('plantTags.' + val)}
             />
 
             {/* Extras */}
@@ -307,7 +307,7 @@ const SetUserPreferencesScreen: React.FC = () => {
                     : [...prev, val]
                 )
               }
-              getLabel={(val) => t('extras.' + val)}
+              getLabel={(val) => t('plantTags.' + val)}
             />
 
             <ConfirmCancelButtons

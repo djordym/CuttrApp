@@ -1,7 +1,17 @@
 // File: app/features/main/components/PlantThumbnail.tsx
 import React from 'react';
-import { TouchableOpacity, View, Image, Text, StyleSheet, Platform, Dimensions, StyleProp, ViewStyle } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import {
+  TouchableOpacity,
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  Platform,
+  Dimensions,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { COLORS } from '../../../theme/colors';
 import { PlantResponse } from '../../../types/apiTypes';
 
@@ -15,8 +25,8 @@ export interface PlantThumbnailProps {
   selectable?: boolean;
   deletable?: boolean;
   OnDelete?: () => void;
-  // <-- NEW prop for info icon press:
   onInfoPress?: () => void;
+  onEditPress?: () => void; // NEW: Prop for edit action
 }
 
 const PlantThumbnail: React.FC<PlantThumbnailProps> = ({
@@ -28,6 +38,7 @@ const PlantThumbnail: React.FC<PlantThumbnailProps> = ({
   deletable = false,
   OnDelete,
   onInfoPress,
+  onEditPress, // NEW
 }) => {
   return (
     <View style={[styles.outerContainer, isSelected && styles.selected]}>
@@ -47,13 +58,35 @@ const PlantThumbnail: React.FC<PlantThumbnailProps> = ({
             <Ionicons name="leaf" size={40} color={COLORS.accentGreen} />
           </View>
         )}
-        {/* Render an info icon if onInfoPress is provided */}
+        {/* NEW edit icon */}
+      {onEditPress && (
+        <TouchableOpacity
+          style={styles.editIconContainer}
+          onPress={onEditPress}
+        >
+          <MaterialIcons
+            name="edit"
+            size={16}
+            color={COLORS.cardBg1
+            }
+          />
+        </TouchableOpacity>
+      )}
+        {/* Existing info icon */}
         {onInfoPress && (
-          <TouchableOpacity style={styles.infoIconContainer} onPress={onInfoPress}>
-            <Ionicons name="information-circle-outline" size={20} color={COLORS.textLight} />
+          <TouchableOpacity
+            style={styles.infoIconContainer}
+            onPress={onInfoPress}
+          >
+            <Ionicons
+              name="information-circle-outline"
+              size={20}
+              color={COLORS.textLight}
+            />
           </TouchableOpacity>
         )}
         <View style={styles.thumbTextWrapper}>
+          
           <Text style={styles.thumbPlantName}>{plant.speciesName}</Text>
         </View>
       </TouchableOpacity>
@@ -62,6 +95,7 @@ const PlantThumbnail: React.FC<PlantThumbnailProps> = ({
           <Ionicons name="close-circle" size={24} color={COLORS.accentRed} />
         </TouchableOpacity>
       )}
+      
     </View>
   );
 };
@@ -142,5 +176,13 @@ const styles = StyleSheet.create({
     zIndex: 2,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  editIconContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    backgroundColor: COLORS.accentOrange,
+    borderEndEndRadius: 5,
+    padding: 2,
   },
 });
