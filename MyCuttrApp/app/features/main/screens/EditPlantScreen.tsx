@@ -141,7 +141,7 @@ const EditPlantScreen: React.FC = () => {
           <View style={styles.formContainer}>
             {error && <Text style={styles.errorText}>{error}</Text>}
 
-            <Text style={styles.label}>{t('edit_plant_species_name_label')}:</Text>
+            <Text style={styles.label}>{t('species_name_question')}:</Text>
             <TextInput
               style={styles.input}
               value={speciesName}
@@ -149,7 +149,7 @@ const EditPlantScreen: React.FC = () => {
               placeholder="e.g. Monstera Deliciosa"
             />
 
-            <Text style={styles.label}>{t('edit_plant_description_label')}:</Text>
+            <Text style={styles.label}>{t('description_question')}:</Text>
             <TextInput
               style={[styles.input, { height: 80 }]}
               value={description}
@@ -157,7 +157,7 @@ const EditPlantScreen: React.FC = () => {
               multiline
             />
 
-            <Text style={styles.label}>{t('edit_plant_stage_label')}:</Text>
+            <Text style={styles.label}>{t('stage_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(PlantStage)}
@@ -167,7 +167,7 @@ const EditPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('edit_plant_category_label')}:</Text>
+            <Text style={styles.label}>{t('category_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(PlantCategory)}
@@ -177,7 +177,7 @@ const EditPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('edit_plant_watering_label')}:</Text>
+            <Text style={styles.label}>{t('watering_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(WateringNeed)}
@@ -187,7 +187,7 @@ const EditPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('edit_plant_light_label')}:</Text>
+            <Text style={styles.label}>{t('light_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(LightRequirement)}
@@ -197,7 +197,7 @@ const EditPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('edit_plant_size_question')}:</Text>
+            <Text style={styles.label}>{t('size_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(Size)}
@@ -207,7 +207,7 @@ const EditPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('edit_plant_indoor_outdoor_question')}:</Text>
+            <Text style={styles.label}>{t('indoor_outdoor_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(IndoorOutdoor)}
@@ -217,7 +217,7 @@ const EditPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('edit_plant_propagation_ease_question')}:</Text>
+            <Text style={styles.label}>{t('propagation_ease_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(PropagationEase)}
@@ -227,7 +227,7 @@ const EditPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('edit_plant_pet_friendly_question')}:</Text>
+            <Text style={styles.label}>{t('pet_friendly_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(PetFriendly)}
@@ -237,7 +237,7 @@ const EditPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('edit_plant_extras_question')}:</Text>
+            <Text style={styles.label}>{t('extras_question')}:</Text>
             <TagGroup
               mode="multiple"
               values={Object.values(Extras)}

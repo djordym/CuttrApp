@@ -223,7 +223,7 @@ const AddPlantScreen: React.FC = () => {
           <View style={styles.formContainer}>
             {error && <Text style={styles.errorText}>{error}</Text>}
 
-            <Text style={styles.label}>{t('add_plant_species_name_label')}:</Text>
+            <Text style={styles.label}>{t('species_name_question')}:</Text>
             <TextInput
               style={styles.input}
               value={speciesName}
@@ -231,7 +231,7 @@ const AddPlantScreen: React.FC = () => {
               placeholder="e.g. Monstera Deliciosa"
             />
 
-            <Text style={styles.label}>{t('add_plant_description_label')}:</Text>
+            <Text style={styles.label}>{t('description_question')}:</Text>
             <TextInput
               style={[styles.input, { height: 80 }]}
               value={description}
@@ -239,7 +239,7 @@ const AddPlantScreen: React.FC = () => {
               multiline
             />
 
-            <Text style={styles.label}>{t('add_plant_stage_label')}:</Text>
+            <Text style={styles.label}>{t('stage_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(PlantStage)}
@@ -249,7 +249,7 @@ const AddPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('add_plant_category_label')}:</Text>
+            <Text style={styles.label}>{t('category_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(PlantCategory)}
@@ -259,7 +259,7 @@ const AddPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('add_plant_watering_label')}:</Text>
+            <Text style={styles.label}>{t('watering_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(WateringNeed)}
@@ -269,7 +269,7 @@ const AddPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('add_plant_light_label')}:</Text>
+            <Text style={styles.label}>{t('light_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(LightRequirement)}
@@ -279,7 +279,7 @@ const AddPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('add_plant_size_question')}:</Text>
+            <Text style={styles.label}>{t('size_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(Size)}
@@ -289,7 +289,7 @@ const AddPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('add_plant_indoor_outdoor_question')}:</Text>
+            <Text style={styles.label}>{t('indoor_outdoor_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(IndoorOutdoor)}
@@ -299,7 +299,7 @@ const AddPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('add_plant_propagation_ease_question')}:</Text>
+            <Text style={styles.label}>{t('propagation_ease_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(PropagationEase)}
@@ -309,7 +309,7 @@ const AddPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('add_plant_pet_friendly_question')}:</Text>
+            <Text style={styles.label}>{t('pet_friendly_question')}:</Text>
             <TagGroup
               mode="single"
               values={Object.values(PetFriendly)}
@@ -319,7 +319,7 @@ const AddPlantScreen: React.FC = () => {
               getLabel={(val) => t(`plantTags.${val}`)}
             />
 
-            <Text style={styles.label}>{t('add_plant_extras_question')}:</Text>
+            <Text style={styles.label}>{t('extras_question')}:</Text>
             <TagGroup
               mode="multiple"
               values={Object.values(Extras)}

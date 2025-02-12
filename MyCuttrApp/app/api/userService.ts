@@ -33,6 +33,9 @@ export const userService = {
     const response = await api.get<UserResponse>('/users/me');
     return response.data;
   },
+  updatePushToken: async (data: { expoPushToken: string }): Promise<void> => {
+    await api.put('/users/me/push-token', data);
+  },
 };
 
 export default userService;

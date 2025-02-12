@@ -15,7 +15,14 @@ import * as Sentry from '@sentry/react-native';
 import { isRunningInExpoGo } from 'expo';
 import { useNavigationContainerRef } from '@react-navigation/native';
 
-// Construct a new integration instance. This is needed to communicate between the integration and React
+// Import Expo push notifications libraries
+import * as Notifications from 'expo-notifications';
+import * as Device from 'expo-device';
+
+// Import the userService method for updating the push token
+import userService from './api/userService';
+
+// ---------- Sentry Configuration (unchanged) ----------
 const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
 });
@@ -23,40 +30,69 @@ const navigationIntegration = Sentry.reactNavigationIntegration({
 Sentry.init({
   dsn: 'https://257bb6061b5f62855c8c40b523c87628@o4508793864978432.ingest.de.sentry.io/4508793930317904',
   debug: true,
-  tracesSampleRate: 1.0, // Set tracesSampleRate to 1.0 to capture 100% of transactions for tracing. Adjusting this value in production.
-  integrations: [
-    // Pass integration
-    navigationIntegration,
-  ],
-  enableNativeFramesTracking: !isRunningInExpoGo(), // Tracks slow and frozen frames in the application
+  tracesSampleRate: 1.0,
+  integrations: [navigationIntegration],
+  enableNativeFramesTracking: !isRunningInExpoGo(),
 });
-
+// -------------------------------------------------------
 
 const queryClient = new QueryClient();
 
 function App() {
   log.debug('App.tsx rendering...');
-
-  const ref = useNavigationContainerRef();
+  const navigationRef = useNavigationContainerRef();
 
   useEffect(() => {
-    if (ref?.current) {
-      navigationIntegration.registerNavigationContainer(ref);
+    if (navigationRef?.current) {
+      navigationIntegration.registerNavigationContainer(navigationRef);
     }
-  }, [ref]);
+  }, [navigationRef]);
 
   const [i18nInstance, setI18nInstance] = useState<any>(null);
 
   useEffect(() => {
     const setupI18n = async () => {
-      const i18n = await initI18n();   // now uses expo-localization under the hood
+      const i18n = await initI18n();
       setI18nInstance(i18n);
     };
     setupI18n();
   }, []);
 
+  // ----- PUSH NOTIFICATIONS SETUP -----
+  useEffect(() => {
+    const registerPushNotifications = async () => {
+      if (Device.isDevice) {
+        // Check existing permissions
+        const { status: existingStatus } = await Notifications.getPermissionsAsync();
+        let finalStatus = existingStatus;
+        if (existingStatus !== 'granted') {
+          const { status } = await Notifications.requestPermissionsAsync();
+          finalStatus = status;
+        }
+        if (finalStatus !== 'granted') {
+          log.warn('Failed to get push token for notifications!');
+          return;
+        }
+        // Get the Expo push token
+        const tokenResponse = await Notifications.getExpoPushTokenAsync();
+        const expoPushToken = tokenResponse.data;
+
+        // Call the user service to update the token in the backend
+        try {
+          await userService.updatePushToken({ expoPushToken });
+        } catch (error) {
+          log.error('Error updating push token:', error);
+        }
+      } else {
+        log.warn('Push notifications require a physical device.');
+      }
+    };
+
+    registerPushNotifications();
+  }, []);
+  // ---------------------------------------
+
   if (!i18nInstance) {
-    // Still initializing i18n, show a loading indicator
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" />
@@ -68,14 +104,10 @@ function App() {
     <ErrorBoundary>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          {/* Provide the i18n instance to the app */}
           <I18nextProvider i18n={i18nInstance}>
-            <GestureHandlerRootView>
-                <StatusBar
-                  style="dark"
-                  backgroundColor={COLORS.primary} // allow content to appear behind status bar
-                />
-                <AppNavigator />
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <StatusBar style="dark" backgroundColor={COLORS.primary} />
+              <AppNavigator />
             </GestureHandlerRootView>
           </I18nextProvider>
         </QueryClientProvider>

@@ -329,7 +329,9 @@ const SettingsScreen: React.FC = () => {
 
         {/* LANGUAGE SECTION */}
         <View style={styles.section}>
+
           <Text style={styles.sectionTitle}>{t('Language')}</Text>
+          
           <View style={styles.langButtons}>
             <TouchableOpacity
               onPress={() => handleLanguageChange('en')}
@@ -379,6 +381,57 @@ const SettingsScreen: React.FC = () => {
                 ]}
               >
                 Nederlands
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => handleLanguageChange('it')}
+              style={[
+                styles.langButton,
+                currentLang === 'it' && styles.langButtonSelected,
+              ]}
+            >
+              <Text
+                style={[
+                  styles.langButtonText,
+                  currentLang === 'it' && styles.langButtonTextSelected,
+                ]}
+              >
+                Italiano
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => handleLanguageChange('de')}
+              style={[
+                styles.langButton,
+                currentLang === 'de' && styles.langButtonSelected,
+              ]}
+            >
+              <Text
+                style={[
+                  styles.langButtonText,
+                  currentLang === 'de' && styles.langButtonTextSelected,
+                ]}
+              >
+                Deutsch
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => handleLanguageChange('es')}
+              style={[
+                styles.langButton,
+                currentLang === 'es' && styles.langButtonSelected,
+              ]}
+            >
+              <Text
+                style={[
+                  styles.langButtonText,
+                  currentLang === 'es' && styles.langButtonTextSelected,
+                ]}
+              >
+                Español
               </Text>
             </TouchableOpacity>
           </View>
@@ -530,6 +583,8 @@ const styles = StyleSheet.create({
   langButtons: {
     flexDirection: 'row',
     marginTop: 8,
+    flexWrap: 'wrap',
+    flex: 1,
   },
   langButton: {
     paddingVertical: 8,
@@ -537,7 +592,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.accentGreen,
     borderRadius: 20,
-    marginRight: 10,
+    marginHorizontal: 2,
+    marginVertical: 5,
   },
   langButtonSelected: {
     backgroundColor: COLORS.accentGreen,
