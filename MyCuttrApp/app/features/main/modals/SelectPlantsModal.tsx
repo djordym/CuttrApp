@@ -159,12 +159,13 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    padding: 10,
+
   },
   modalContent: {
     backgroundColor: COLORS.textLight,
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
+    borderRadius: 10,
     maxHeight: '85%',
     ...Platform.select({
       ios: {

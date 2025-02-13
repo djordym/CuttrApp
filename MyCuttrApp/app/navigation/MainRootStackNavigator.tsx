@@ -10,7 +10,6 @@ import MakeTradeProposalScreen from '../features/main/screens/MakeTradeProposalS
 import BrowseMatchesScreen from '../features/main/screens/BrowseMatchesScreen';
 import TradeProposalsScreen from '../features/main/screens/TradeProposalsScreen';
 import EditPlantScreen from '../features/main/screens/EditPlantScreen';
-
 const RootStack = createNativeStackNavigator();
 
 const MainRootStackNavigator = () => (

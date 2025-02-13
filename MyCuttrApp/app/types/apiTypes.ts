@@ -16,7 +16,7 @@ export interface PlantCreateRequest {
 export interface PlantRequest {
     speciesName: string;
     description: string | null;
-    plantStage: PlantStage;
+    plantStage: PlantStage | null;
     plantCategory: PlantCategory | null;
     wateringNeed: WateringNeed | null;
     lightRequirement: LightRequirement | null;
@@ -121,11 +121,11 @@ export interface PlantResponse {
     plantId: number;
     userId: number;
     speciesName: string;
-    description: string;
-    plantStage: PlantStage;
-    plantCategory: PlantCategory;
-    wateringNeed: WateringNeed;
-    lightRequirement: LightRequirement;
+    description?: string;
+    plantStage?: PlantStage;
+    plantCategory?: PlantCategory;
+    wateringNeed?: WateringNeed;
+    lightRequirement?: LightRequirement;
     size?: Size;
     indoorOutdoor?: IndoorOutdoor;
     propagationEase?: PropagationEase;

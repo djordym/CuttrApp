@@ -16,20 +16,21 @@ export default {
     "updates": {
       "enabled": true,
       "checkAutomatically": "ON_LOAD",
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/108fd613-1303-477b-be70-f16feed69b79"
     },
     "runtimeVersion": {
       "policy": "sdkVersion"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "config": {
         googleMaps: {
           apiKey: process.env.GOOGLE_MAPS_API_KEY, // Loaded from an environment variable
         },
-
       },
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/logo.png",
         "backgroundColor": "#00000000"
       },
       "permissions": [

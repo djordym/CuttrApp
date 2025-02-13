@@ -148,10 +148,7 @@ const AddPlantScreen: React.FC = () => {
       Alert.alert('Validation Error', 'Species name is required.');
       return;
     }
-    if (!stage) {
-      Alert.alert('Validation Error', 'Plant stage is required.');
-      return;
-    }
+    
     if (!image) {
       Alert.alert('Validation Error', 'An image is required.');
       return;
