@@ -3,9 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../../../theme/colors';
+import { useTranslation } from 'react-i18next';
 
 const OnboardingWelcomeScreen: React.FC = () => {
   const navigation = useNavigation();
+  const { t } = useTranslation();
 
   const handleNextPress = () => {
     navigation.navigate('OnboardingBio' as never);
@@ -14,12 +16,10 @@ const OnboardingWelcomeScreen: React.FC = () => {
   return (
     <LinearGradient colors={[COLORS.primary, COLORS.secondary]} style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>Welcome to Cuttr!</Text>
-        <Text style={styles.subtitle}>
-          Expand and diversify your plant collection effortlessly. Cuttr lets you trade unique, free plant cuttings from the coolest, hard‐to‐find species – no more relying on big greenhouses that aren’t eco–friendly. Share your cuttings and discover new gems to brighten up your space!
-        </Text>
+        <Text style={styles.title}>{t('onboarding.welcomeTitle')}</Text>
+        <Text style={styles.subtitle}>{t('onboarding.welcomeSubtitle')}</Text>
         <TouchableOpacity onPress={handleNextPress} style={styles.button}>
-          <Text style={styles.buttonText}>Next: Tell Us About You</Text>
+          <Text style={styles.buttonText}>{t('onboarding.nextButton')}</Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>

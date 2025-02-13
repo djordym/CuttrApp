@@ -2,11 +2,11 @@ import 'dotenv/config';
 
 export default {
   "expo": {
-    "name": "MyCuttrApp",
+    "name": "Cuttr",
     "slug": "MyCuttrApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,

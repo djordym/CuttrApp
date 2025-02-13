@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Alert, Keyboard } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  Alert,
+  Keyboard,
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../../../theme/colors';
 // Adjust the following import to wherever your profile hook or service is defined.
 import { useMyProfile } from '../../../features/main/hooks/useMyProfileHooks';
 import { userService } from '../../../api/userService';
+import { useTranslation } from 'react-i18next';
 
 const OnboardingBioScreen: React.FC = () => {
   const navigation = useNavigation();
+  const { t } = useTranslation();
   const { data: userProfile } = useMyProfile();
   const [bio, setBio] = useState(userProfile?.bio ?? '');
 
@@ -17,38 +27,38 @@ const OnboardingBioScreen: React.FC = () => {
   };
 
   const handleSubmitBio = async () => {
-    // Optionally add validation if bio is empty.
     Keyboard.dismiss();
     try {
       await userService.updateMe({ name: userProfile?.name ?? '', bio });
       navigation.navigate('OnboardingLocation' as never);
     } catch (error) {
-      Alert.alert('Error', 'Failed to update your bio. Please try again.');
+      Alert.alert(
+        t('onboarding.bio.errorTitle'),
+        t('onboarding.bio.errorMessage')
+      );
     }
   };
 
   return (
     <LinearGradient colors={[COLORS.primary, COLORS.secondary]} style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>Your Story</Text>
-        <Text style={styles.subtitle}>
-          Let others know a little about you. A short bio helps fellow plant enthusiasts know more about who they are entrusting their precious plants with.
-        </Text>
+        <Text style={styles.title}>{t('onboarding.bio.title')}</Text>
+        <Text style={styles.subtitle}>{t('onboarding.bio.subtitle')}</Text>
         <TextInput
           style={styles.textInput}
           value={bio}
           onChangeText={setBio}
-          placeholder="Write a short bio..."
+          placeholder={t('onboarding.bio.placeholder')}
           placeholderTextColor="#ccc"
           multiline
           textAlignVertical="top"
         />
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={handleSkip} style={[styles.button, styles.skipButton]}>
-            <Text style={styles.buttonText}>Skip</Text>
+            <Text style={styles.buttonText}>{t('onboarding.bio.skipButton')}</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={handleSubmitBio} style={[styles.button, styles.submitButton]}>
-            <Text style={styles.buttonText}>Next: Choose Location</Text>
+            <Text style={styles.buttonText}>{t('onboarding.bio.submitButton')}</Text>
           </TouchableOpacity>
         </View>
       </View>

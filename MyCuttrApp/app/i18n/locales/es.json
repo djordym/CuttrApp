@@ -1,4 +1,29 @@
 {
+  "onboarding": {
+    "welcomeTitle": "¡Bienvenido a Cuttr!",
+    "welcomeSubtitle": "Creé esta aplicación para que las personas tengan una forma fácil y divertida de compartir e intercambiar sus plantas y esquejes. Al intercambiar plantas, podemos ayudarnos mutuamente a construir colecciones diversas y prósperas. ¿Tienes una planta curiosa que se reproduzca fácilmente? ¡Sé generoso y compártela para alegrarle el día a otro amante de las plantas!",
+    "nextButton": "Siguiente: Cuéntanos sobre ti",
+    "location": {
+      "headerTitle": "Configura tu ubicación",
+      "permissionDenied": "Permiso denegado. Toca el mapa para elegir una ubicación.",
+      "instruction": "Toca el mapa para establecer tu ubicación aproximada.",
+      "selectedLocationMarker": "Ubicación seleccionada",
+      "confirmButton": "Confirmar y continuar",
+      "noLocationTitle": "Sin ubicación",
+      "noLocationMessage": "Por favor, toca el mapa para elegir una ubicación.",
+      "errorTitle": "Error",
+      "errorMessage": "No se pudo actualizar la ubicación. Por favor, inténtalo de nuevo."
+    },
+    "bio": {
+      "title": "Tu historia",
+      "subtitle": "Permite que los demás sepan un poco sobre ti. Una biografía corta ayuda a otros amantes de las plantas a conocer mejor a la persona en quien confían sus preciadas plantas.",
+      "placeholder": "Escribe una breve biografía...",
+      "skipButton": "Omitir",
+      "submitButton": "Siguiente: Elegir ubicación",
+      "errorTitle": "Error",
+      "errorMessage": "No se pudo actualizar tu biografía. Por favor, inténtalo de nuevo."
+    }
+  },
   "welcome_back": "Bienvenido de nuevo",
   "create_account": "Crear Cuenta",
   "login": "Iniciar Sesión",

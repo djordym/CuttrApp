@@ -6,7 +6,6 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   ActivityIndicator,
-  Alert,
   ScrollView,
   Platform,
 } from 'react-native';
@@ -36,20 +35,70 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { status, error } = useAppSelector((state: RootState) => state.auth);
+  // Local state for error messages
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
+  const { error } = useAppSelector((state: RootState) => state.auth);
 
   const handleRegister = async () => {
-    if (!name.trim() || !email.trim() || !password.trim()) {
-      Alert.alert(t('error_title'), t('Please fill all fields.'));
-      return;
+    let valid = true;
+
+    // Reset error messages
+    setNameError('');
+    setEmailError('');
+    setPasswordError('');
+
+    // Check for empty fields
+    if (!name.trim()) {
+      setNameError(t('Name is required.'));
+      valid = false;
     }
+    if (!email.trim()) {
+      setEmailError(t('Email is required.'));
+      valid = false;
+    }
+    if (!password.trim()) {
+      setPasswordError(t('Password is required.'));
+      valid = false;
+    }
+    if (!valid) return;
+
+    // Validate email using a regex pattern
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!emailRegex.test(email.trim())) {
+      setEmailError(t('Please enter a valid email address.'));
+      valid = false;
+    }
+
+    // Validate password: at least 8 characters with one uppercase, one lowercase, and one number
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setPasswordError(
+        t(
+          'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.'
+        )
+      );
+      valid = false;
+    }
+
+    if (!valid) return;
+
     const userRegistrationRequest: UserRegistrationRequest = {
       email: email.trim(),
       password: password.trim(),
       name: name.trim(),
     };
+
     log.debug('Pressed register button, userRegistrationRequest:', userRegistrationRequest);
-    await dispatch(registerThunk(userRegistrationRequest));
+
+    setLoading(true);
+    try {
+      await dispatch(registerThunk(userRegistrationRequest));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -83,6 +132,11 @@ const RegisterScreen = () => {
               onChangeText={setName}
               placeholder={t('name')}
             />
+            {nameError ? (
+              <Text style={{ color: 'red', marginTop: 5, fontSize: 12 }}>
+                {nameError}
+              </Text>
+            ) : null}
 
             {/* Email */}
             <TextInputField
@@ -90,6 +144,11 @@ const RegisterScreen = () => {
               onChangeText={setEmail}
               placeholder={t('email')}
             />
+            {emailError ? (
+              <Text style={{ color: 'red', marginTop: 5, fontSize: 12 }}>
+                {emailError}
+              </Text>
+            ) : null}
 
             {/* Password */}
             <TextInputField
@@ -98,6 +157,11 @@ const RegisterScreen = () => {
               placeholder={t('password')}
               secureTextEntry
             />
+            {passwordError ? (
+              <Text style={{ color: 'red', marginTop: 5, fontSize: 12 }}>
+                {passwordError}
+              </Text>
+            ) : null}
 
             {/* Submit */}
             <TouchableOpacity
@@ -114,7 +178,7 @@ const RegisterScreen = () => {
               )}
             </TouchableOpacity>
 
-            {/* Already have account */}
+            {/* Already have an account */}
             <TouchableOpacity
               onPress={() => navigation.navigate('Login' as never)}
               style={styles.navLinkContainer}

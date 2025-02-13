@@ -1,4 +1,29 @@
 {
+  "onboarding": {
+    "welcomeTitle": "Bienvenue sur Cuttr !",
+    "welcomeSubtitle": "J'ai créé cette application pour offrir aux gens un moyen simple et amusant de partager et d'échanger leurs plantes et boutures. En échangeant des plantes, nous pouvons nous entraider à constituer des collections variées et florissantes. Vous avez une plante un peu originale qui se propage facilement ? Faites preuve de générosité : partagez-la pour égayer la journée d'un autre passionné de plantes !",
+    "nextButton": "Suivant : Parlez-nous de vous",
+    "location": {
+      "headerTitle": "Définissez votre position",
+      "permissionDenied": "Autorisation refusée. Touchez la carte pour choisir un emplacement.",
+      "instruction": "Touchez la carte pour définir votre emplacement approximatif.",
+      "selectedLocationMarker": "Emplacement sélectionné",
+      "confirmButton": "Confirmer et continuer",
+      "noLocationTitle": "Aucun emplacement",
+      "noLocationMessage": "Veuillez toucher la carte pour choisir un emplacement.",
+      "errorTitle": "Erreur",
+      "errorMessage": "Impossible de mettre à jour l'emplacement. Veuillez réessayer."
+    },
+    "bio": {
+      "title": "Votre histoire",
+      "subtitle": "Permettez aux autres d'en savoir un peu plus sur vous. Une courte biographie aide les autres amateurs de plantes à savoir à qui ils confient leurs précieuses plantes.",
+      "placeholder": "Rédigez une courte biographie...",
+      "skipButton": "Ignorer",
+      "submitButton": "Suivant : Choisir l'emplacement",
+      "errorTitle": "Erreur",
+      "errorMessage": "Impossible de mettre à jour votre biographie. Veuillez réessayer."
+    }
+  },
   "welcome_back": "Bon retour",
   "create_account": "Créer un compte",
   "login": "Se connecter",

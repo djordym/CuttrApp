@@ -117,9 +117,7 @@ const ConnectionsScreen: React.FC = () => {
           <Text style={styles.emptyStateMessage}>
             {t('connections_none_message')}
           </Text>
-            <Text style={styles.emptyStateButtonText}>
-              {t('connections_none_action')}
-            </Text>
+           
         </View>
       </SafeAreaProvider>
     );

@@ -1,4 +1,3 @@
-// File: app/features/onboarding/screens/OnboardingLocationScreen.tsx
 import React, { useEffect, useState } from 'react';
 import {
   View,
@@ -14,12 +13,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../../../theme/colors';
 import { useUpdateLocation } from '../../main/hooks/useMyProfileHooks';
+import { useTranslation } from 'react-i18next';
 
 const { width, height } = Dimensions.get('window');
 
 const OnboardingLocationScreen: React.FC = () => {
   const navigation = useNavigation();
   const updateLocation = useUpdateLocation();
+  const { t } = useTranslation();
 
   const [region, setRegion] = useState<Region | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<{
@@ -89,7 +90,10 @@ const OnboardingLocationScreen: React.FC = () => {
   // Confirm the chosen location
   const handleConfirmLocation = async () => {
     if (!selectedLocation) {
-      Alert.alert('No Location', 'Please tap on the map to choose a location.');
+      Alert.alert(
+        t('onboarding.location.noLocationTitle'),
+        t('onboarding.location.noLocationMessage')
+      );
       return;
     }
     try {
@@ -100,33 +104,32 @@ const OnboardingLocationScreen: React.FC = () => {
       // Navigate to the next onboarding step
       navigation.navigate('OnboardingWelcome' as never);
     } catch (error) {
-      Alert.alert('Error', 'Failed to update location. Please try again.');
+      Alert.alert(
+        t('onboarding.location.errorTitle'),
+        t('onboarding.location.errorMessage')
+      );
     }
   };
 
   return (
     <View style={styles.container}>
       <LinearGradient colors={[COLORS.primary, COLORS.secondary]} style={styles.header}>
-        <Text style={styles.headerTitle}>Set Your Location</Text>
+        <Text style={styles.headerTitle}>{t('onboarding.location.headerTitle')}</Text>
       </LinearGradient>
 
       <Text style={styles.instructions}>
         {permissionStatus === Location.PermissionStatus.DENIED
-          ? 'Permission denied. Tap on the map to choose a location.'
-          : 'Tap on the map to set your approximate location.'}
+          ? t('onboarding.location.permissionDenied')
+          : t('onboarding.location.instruction')}
       </Text>
 
       <View style={styles.mapContainer}>
         {region && (
-          <MapView
-            style={StyleSheet.absoluteFill}
-            region={region}
-            onPress={handleMapPress}
-          >
+          <MapView style={StyleSheet.absoluteFill} region={region} onPress={handleMapPress}>
             {selectedLocation && (
               <Marker
                 coordinate={selectedLocation}
-                title="Selected Location"
+                title={t('onboarding.location.selectedLocationMarker')}
               />
             )}
           </MapView>
@@ -134,7 +137,7 @@ const OnboardingLocationScreen: React.FC = () => {
       </View>
 
       <TouchableOpacity style={styles.confirmButton} onPress={handleConfirmLocation}>
-        <Text style={styles.confirmButtonText}>Confirm & Continue</Text>
+        <Text style={styles.confirmButtonText}>{t('onboarding.location.confirmButton')}</Text>
       </TouchableOpacity>
     </View>
   );

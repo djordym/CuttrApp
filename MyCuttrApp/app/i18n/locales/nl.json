@@ -1,4 +1,29 @@
 {
+  "onboarding": {
+    "welcomeTitle": "Welkom bij Cuttr!",
+    "welcomeSubtitle": "Ik heb deze app gemaakt zodat mensen op een gemakkelijke en leuke manier hun planten en stekjes kunnen delen en ruilen. Door planten te ruilen kunnen we elkaar helpen om gevarieerde, bloeiende collecties op te bouwen. Heb je een bijzondere plant die gemakkelijk vermeerdert? Wees gul en deel hem, zodat je de dag van een andere plantenliefhebber opfleurt!",
+    "nextButton": "Volgende: Vertel ons iets over jezelf",
+    "location": {
+      "headerTitle": "Stel je locatie in",
+      "permissionDenied": "Toegang geweigerd. Tik op de kaart om een locatie te kiezen.",
+      "instruction": "Tik op de kaart om je geschatte locatie in te stellen.",
+      "selectedLocationMarker": "Geselecteerde locatie",
+      "confirmButton": "Bevestigen & Doorgaan",
+      "noLocationTitle": "Geen locatie",
+      "noLocationMessage": "Tik op de kaart om een locatie te kiezen.",
+      "errorTitle": "Fout",
+      "errorMessage": "Locatie bijwerken mislukt. Probeer het alstublieft opnieuw."
+    },
+    "bio": {
+      "title": "Jouw verhaal",
+      "subtitle": "Laat anderen iets over jou te weten komen. Een korte bio helpt andere plantenliefhebbers te weten bij wie ze hun kostbare planten toevertrouwen.",
+      "placeholder": "Schrijf een korte bio...",
+      "skipButton": "Overslaan",
+      "submitButton": "Volgende: Kies locatie",
+      "errorTitle": "Fout",
+      "errorMessage": "Het is niet gelukt om je bio bij te werken. Probeer het alstublieft opnieuw."
+    }
+  },
   "welcome_back": "Welkom terug",
   "create_account": "Account aanmaken",
   "login": "Inloggen",
@@ -6,7 +31,7 @@
   "email": "Email",
   "password": "Wachtwoord",
   "name": "Bijnaam",
-  "no_account_register": "Heb je geen account? Registreer",
+  "no_account_register": "Heb je nog geen account? Registreer",
   "have_account_login": "Heb je al een account? Log in",
   "profile_title": "Profiel",
   "profile_loading_message": "Bezig met laden van je profiel...",

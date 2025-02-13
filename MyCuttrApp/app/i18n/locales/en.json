@@ -1,4 +1,30 @@
 {
+ 
+  "onboarding": {
+    "welcomeTitle": "Welcome to Cuttr!",
+    "welcomeSubtitle": "I created this app for people to have an easy and fun way to share and trade their plants and cuttings. By swapping plants, we can help each other build diverse, thriving collections. Got a funky-looking plant that’s easy to propagate? Be a pal—share it and make another plant lover’s day!",
+    "nextButton": "Next: Tell Us About You",
+    "location": {
+      "headerTitle": "Set Your Location",
+      "permissionDenied": "Permission denied. Tap on the map to choose a location.",
+      "instruction": "Tap on the map to set your approximate location.",
+      "selectedLocationMarker": "Selected Location",
+      "confirmButton": "Confirm & Continue",
+      "noLocationTitle": "No Location",
+      "noLocationMessage": "Please tap on the map to choose a location.",
+      "errorTitle": "Error",
+      "errorMessage": "Failed to update location. Please try again."
+    },
+    "bio": {
+      "title": "Your Story",
+      "subtitle": "Let others know a little about you. A short bio helps fellow plant enthusiasts know more about who they are entrusting their precious plants with.",
+      "placeholder": "Write a short bio...",
+      "skipButton": "Skip",
+      "submitButton": "Next: Choose Location",
+      "errorTitle": "Error",
+      "errorMessage": "Failed to update your bio. Please try again."
+    }
+  },
   "welcome_back": "Welcome Back",
   "create_account": "Create Account",
   "login": "Login",

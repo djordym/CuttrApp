@@ -1,4 +1,29 @@
 {
+  "onboarding": {
+    "welcomeTitle": "Benvenuto su Cuttr!",
+    "welcomeSubtitle": "Ho creato questa app per offrire alle persone un modo semplice e divertente di condividere e scambiare le proprie piante e talee. Scambiando piante, possiamo aiutarci a vicenda a costruire collezioni varie e rigogliose. Hai una pianta strana che si propaga facilmente? Sii generoso: condividila per rendere felice un altro amante delle piante!",
+    "nextButton": "Avanti: Parlaci di te",
+    "location": {
+      "headerTitle": "Imposta la tua posizione",
+      "permissionDenied": "Permesso negato. Tocca la mappa per scegliere una posizione.",
+      "instruction": "Tocca la mappa per impostare la tua posizione approssimativa.",
+      "selectedLocationMarker": "Posizione selezionata",
+      "confirmButton": "Conferma e continua",
+      "noLocationTitle": "Nessuna posizione",
+      "noLocationMessage": "Per favore tocca la mappa per scegliere una posizione.",
+      "errorTitle": "Errore",
+      "errorMessage": "Impossibile aggiornare la posizione. Per favore riprova."
+    },
+    "bio": {
+      "title": "La tua storia",
+      "subtitle": "Fai sapere qualcosa di te agli altri. Una breve biografia aiuta gli altri amanti delle piante a conoscere meglio la persona a cui affidano le proprie preziose piante.",
+      "placeholder": "Scrivi una breve biografia...",
+      "skipButton": "Salta",
+      "submitButton": "Avanti: Scegli la posizione",
+      "errorTitle": "Errore",
+      "errorMessage": "Impossibile aggiornare la tua biografia. Per favore riprova."
+    }
+  },
     "welcome_back": "Bentornato",
     "create_account": "Crea Account",
     "login": "Accedi",

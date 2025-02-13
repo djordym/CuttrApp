@@ -223,112 +223,7 @@ const AddPlantScreen: React.FC = () => {
           <View style={styles.formContainer}>
             {error && <Text style={styles.errorText}>{error}</Text>}
 
-            <Text style={styles.label}>{t('species_name_question')}:</Text>
-            <TextInput
-              style={styles.input}
-              value={speciesName}
-              onChangeText={setSpeciesName}
-              placeholder="e.g. Monstera Deliciosa"
-            />
-
-            <Text style={styles.label}>{t('description_question')}:</Text>
-            <TextInput
-              style={[styles.input, { height: 80 }]}
-              value={description}
-              onChangeText={setDescription}
-              multiline
-            />
-
-            <Text style={styles.label}>{t('stage_question')}:</Text>
-            <TagGroup
-              mode="single"
-              values={Object.values(PlantStage)}
-              selectedValue={stage}
-              onSelectSingle={(val) => setStage(val)}
-              isRequired={true}
-              getLabel={(val) => t(`plantTags.${val}`)}
-            />
-
-            <Text style={styles.label}>{t('category_question')}:</Text>
-            <TagGroup
-              mode="single"
-              values={Object.values(PlantCategory)}
-              selectedValue={category}
-              onSelectSingle={(val) => setCategory(val === category ? null : val)}
-              isRequired={false}
-              getLabel={(val) => t(`plantTags.${val}`)}
-            />
-
-            <Text style={styles.label}>{t('watering_question')}:</Text>
-            <TagGroup
-              mode="single"
-              values={Object.values(WateringNeed)}
-              selectedValue={watering}
-              onSelectSingle={(val) => setWatering(val === watering ? null : val)}
-              isRequired={false}
-              getLabel={(val) => t(`plantTags.${val}`)}
-            />
-
-            <Text style={styles.label}>{t('light_question')}:</Text>
-            <TagGroup
-              mode="single"
-              values={Object.values(LightRequirement)}
-              selectedValue={light}
-              onSelectSingle={(val) => setLight(val === light ? null : val)}
-              isRequired={false}
-              getLabel={(val) => t(`plantTags.${val}`)}
-            />
-
-            <Text style={styles.label}>{t('size_question')}:</Text>
-            <TagGroup
-              mode="single"
-              values={Object.values(Size)}
-              selectedValue={size}
-              onSelectSingle={(val) => setSize(val === size ? null : val)}
-              isRequired={false}
-              getLabel={(val) => t(`plantTags.${val}`)}
-            />
-
-            <Text style={styles.label}>{t('indoor_outdoor_question')}:</Text>
-            <TagGroup
-              mode="single"
-              values={Object.values(IndoorOutdoor)}
-              selectedValue={indoorOutdoor}
-              onSelectSingle={(val) => setIndoorOutdoor(val === indoorOutdoor ? null : val)}
-              isRequired={false}
-              getLabel={(val) => t(`plantTags.${val}`)}
-            />
-
-            <Text style={styles.label}>{t('propagation_ease_question')}:</Text>
-            <TagGroup
-              mode="single"
-              values={Object.values(PropagationEase)}
-              selectedValue={propagationEase}
-              onSelectSingle={(val) => setPropagationEase(val === propagationEase ? null : val)}
-              isRequired={false}
-              getLabel={(val) => t(`plantTags.${val}`)}
-            />
-
-            <Text style={styles.label}>{t('pet_friendly_question')}:</Text>
-            <TagGroup
-              mode="single"
-              values={Object.values(PetFriendly)}
-              selectedValue={petFriendly}
-              onSelectSingle={(val) => setPetFriendly(val === petFriendly ? null : val)}
-              isRequired={false}
-              getLabel={(val) => t(`plantTags.${val}`)}
-            />
-
-            <Text style={styles.label}>{t('extras_question')}:</Text>
-            <TagGroup
-              mode="multiple"
-              values={Object.values(Extras)}
-              selectedValues={selectedExtras}
-              onToggleMulti={(val) => handleExtraToggle(val)}
-              getLabel={(val) => t(`plantTags.${val}`)}
-            />
-
-            <Text style={styles.label}>{t('add_plant_select_image_title')}:</Text>
+            <Text style={styles.label}>{t('add_plant_select_image_title')}</Text>
             <TouchableOpacity style={styles.imageButton} onPress={handleSelectImageOption}>
               <Ionicons name="image" size={24} color="#fff" />
               <Text style={styles.imageButtonText}>
@@ -342,6 +237,113 @@ const AddPlantScreen: React.FC = () => {
                 {t('add_plant_no_image_selected')}
               </Text>
             )}
+
+            <Text style={styles.label}>{t('species_name_question')}</Text>
+            <TextInput
+              style={styles.input}
+              value={speciesName}
+              onChangeText={setSpeciesName}
+              placeholder="e.g. Monstera Deliciosa"
+            />
+
+            <Text style={styles.label}>{t('description_question')}</Text>
+            <TextInput
+              style={[styles.input, { height: 80 }]}
+              value={description}
+              onChangeText={setDescription}
+              multiline
+            />
+
+            <Text style={styles.label}>{t('stage_question')}</Text>
+            <TagGroup
+              mode="single"
+              values={Object.values(PlantStage)}
+              selectedValue={stage}
+              onSelectSingle={(val) => setStage(val)}
+              isRequired={true}
+              getLabel={(val) => t(`plantTags.${val}`)}
+            />
+
+            <Text style={styles.label}>{t('category_question')}</Text>
+            <TagGroup
+              mode="single"
+              values={Object.values(PlantCategory)}
+              selectedValue={category}
+              onSelectSingle={(val) => setCategory(val === category ? null : val)}
+              isRequired={false}
+              getLabel={(val) => t(`plantTags.${val}`)}
+            />
+
+            <Text style={styles.label}>{t('watering_question')}</Text>
+            <TagGroup
+              mode="single"
+              values={Object.values(WateringNeed)}
+              selectedValue={watering}
+              onSelectSingle={(val) => setWatering(val === watering ? null : val)}
+              isRequired={false}
+              getLabel={(val) => t(`plantTags.${val}`)}
+            />
+
+            <Text style={styles.label}>{t('light_question')}</Text>
+            <TagGroup
+              mode="single"
+              values={Object.values(LightRequirement)}
+              selectedValue={light}
+              onSelectSingle={(val) => setLight(val === light ? null : val)}
+              isRequired={false}
+              getLabel={(val) => t(`plantTags.${val}`)}
+            />
+
+            <Text style={styles.label}>{t('size_question')}</Text>
+            <TagGroup
+              mode="single"
+              values={Object.values(Size)}
+              selectedValue={size}
+              onSelectSingle={(val) => setSize(val === size ? null : val)}
+              isRequired={false}
+              getLabel={(val) => t(`plantTags.${val}`)}
+            />
+
+            <Text style={styles.label}>{t('indoor_outdoor_question')}</Text>
+            <TagGroup
+              mode="single"
+              values={Object.values(IndoorOutdoor)}
+              selectedValue={indoorOutdoor}
+              onSelectSingle={(val) => setIndoorOutdoor(val === indoorOutdoor ? null : val)}
+              isRequired={false}
+              getLabel={(val) => t(`plantTags.${val}`)}
+            />
+
+            <Text style={styles.label}>{t('propagation_ease_question')}</Text>
+            <TagGroup
+              mode="single"
+              values={Object.values(PropagationEase)}
+              selectedValue={propagationEase}
+              onSelectSingle={(val) => setPropagationEase(val === propagationEase ? null : val)}
+              isRequired={false}
+              getLabel={(val) => t(`plantTags.${val}`)}
+            />
+
+            <Text style={styles.label}>{t('pet_friendly_question')}</Text>
+            <TagGroup
+              mode="single"
+              values={Object.values(PetFriendly)}
+              selectedValue={petFriendly}
+              onSelectSingle={(val) => setPetFriendly(val === petFriendly ? null : val)}
+              isRequired={false}
+              getLabel={(val) => t(`plantTags.${val}`)}
+            />
+
+            <Text style={styles.label}>{t('extras_question')}</Text>
+            <TagGroup
+              mode="multiple"
+              values={Object.values(Extras)}
+              selectedValues={selectedExtras}
+              onToggleMulti={(val) => handleExtraToggle(val)}
+              getLabel={(val) => t(`plantTags.${val}`)}
+            />
+
+            
 
             <ConfirmCancelButtons
               onConfirm={handleSave}
