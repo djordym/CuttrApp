@@ -58,6 +58,17 @@ function App() {
     setupI18n();
   }, []);
 
+  useEffect(() => {
+    if (Device.osName === 'Android') {
+      Notifications.setNotificationChannelAsync('default', {
+        name: 'default',
+        importance: Notifications.AndroidImportance.DEFAULT,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: '#FF231F7C',
+      });
+    }
+  }, []);
+
   // ----- PUSH NOTIFICATIONS SETUP -----
   useEffect(() => {
     const registerPushNotifications = async () => {

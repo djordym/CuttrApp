@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "219758026789",
+    "project_id": "cuttr-fc0c1",
+    "storage_bucket": "cuttr-fc0c1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219758026789:android:5696f56869a9166c549fcc",
+        "android_client_info": {
+          "package_name": "com.djordym.MyCuttrApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfs8jRonE1SN3mm9hDN0E_26V4PQnK8EU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

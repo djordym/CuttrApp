@@ -147,7 +147,7 @@ const MyProfileScreen: React.FC = () => {
           colors={[COLORS.primary, COLORS.secondary]}
           style={headerStyles.headerGradient}
         >
-          <Text style={headerStyles.headerTitle}>{t('profile_title')}testestes</Text>
+          <Text style={headerStyles.headerTitle}>{t('profile_title')}</Text>
         </LinearGradient>
 
         {/* --- Profile Card --- */}

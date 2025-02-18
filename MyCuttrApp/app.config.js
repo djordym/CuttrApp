@@ -23,6 +23,11 @@ export default {
       "policy": "sdkVersion"
     },
     "android": {
+      "notification": {
+        "icon": "./assets/images/notificationIcon.png", // your custom notification icon
+        "color": "#ffffff",
+        "iosDisplayInForeground": true
+      },
       "googleServicesFile": "./google-services.json",
       "config": {
         googleMaps: {
@@ -30,8 +35,8 @@ export default {
         },
       },
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo.png",
-        "backgroundColor": "#00000000"
+        "foregroundImage": "./assets/images/appIcon.png",
+        "backgroundColor": "#ffffff"
       },
       "permissions": [
         "android.permission.ACCESS_COARSE_LOCATION",
